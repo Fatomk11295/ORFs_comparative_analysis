@@ -37,4 +37,4 @@ This repository is a guide for analyses performed in the publication about findi
    * found in some nonpathogenic genomes.
 
 The following image represents the ORFs filtration.
-![your-file-id](https://github.com/Fatomk11295/ORFs_comparative_analysis/blob/main/figure_19_upscaled%20(1).png).
+![figure_19_upscaled](https://github.com/Fatomk11295/ORFs_comparative_analysis/blob/main/images/figure_19_upscaled%20(1).png).
