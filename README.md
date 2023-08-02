@@ -10,9 +10,10 @@
 * Explore a candidate ORF
 
 ### Introduction
+
 This repository is a guide for analyses performed in the publication about finding proteins responsible for the pathogenicity of Staphylococci species.
 
-### Extraction, filtration and categorizing of ORFs 
+**Extraction, filtration and categorizing of ORFs**
 The pipeline involves several steps to ensure accurate and meaningful results. Below is an overview of the pipeline stages:
 
 1. **Genomes Selection:**
