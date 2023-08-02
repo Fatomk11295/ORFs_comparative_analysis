@@ -11,10 +11,9 @@
 
 ### Introduction
 This repository is a guide for analyses performed in the publication about finding proteins responsible for the pathogenicity of Staphylococci species.
-## Extraction, filtration and categorizing of ORFs
-## Staphylococcus ORF Extraction and Filtering Pipeline
 
- The pipeline involves several steps to ensure accurate and meaningful results. Below is an overview of the pipeline stages:
+### Extraction, filtration and categorizing of ORFs 
+The pipeline involves several steps to ensure accurate and meaningful results. Below is an overview of the pipeline stages:
 
 1. **Genomes Selection:**
    Species known for their pathogenicity were chosen, including S. aureus Mu3, S. lugdunensis HKU09-01, S. haemolyticus JCSC1435, S. saprophyticus ATCC 15305, and S. schleiferi strain 1360-13. Nonpathogenic species included S. carnosus TM300, S. cohnii SNUDS-2, S. warneri SG1, S. nepalensis DSM 15150, and S. pasteuri JS7. 
@@ -36,5 +35,6 @@ This repository is a guide for analyses performed in the publication about findi
    * found in some pathogenic category.
    * found in some nonpathogenic genomes.
 
-The following image represents the ORFs filtration.
+The following image presents the filtration and categorizing process.
+
 ![figure_19_upscaled](https://github.com/Fatomk11295/ORFs_comparative_analysis/blob/main/images/figure_19_upscaled%20(1).png).
