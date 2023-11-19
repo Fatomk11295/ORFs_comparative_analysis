@@ -1,17 +1,22 @@
 # Comparative analyses of Open Reading Frames (ORFs) between pathogenic and nonpathogenic Staphylococci species
 
-## Table of contents
-* Introduction
-* Extraction, filtration, and categorizing of ORFs 
-* Annotation
-* Conservation test
-* Function prediction
-* Explore neighboring genes 
-* Explore a candidate ORF
-
-### Introduction
+# Introduction
 
 This repository guides analyses in the publication "Identification of pathogenic-specific open reading frames in staphylococci species".
+
+## Methodology :
+
+   **1.** Extraction, filtration, and categorizing of ORFs
+
+   **2.** Annotation
+
+   **3.** Conservation test
+
+   **4.** Function prediction
+
+   **5.** Explore a candidate ORF
+
+---
 
 ### Extraction, filtration, and categorizing of ORFs
 The pipeline involves several steps to ensure accurate and meaningful results. Below is an overview of the pipeline stages:
@@ -75,7 +80,81 @@ The following image presents the filtration and categorizing process.
 
 ![figure_1.jpg](https://github.com/Fatomk11295/ORFs_comparative_analysis/blob/main/images/figure_1.jpg)
 
+---
 
-### Underlying data available at [figshare open repository](https://figshare.com/articles/dataset/Underlying_data_for_Identification_of_pathogenic-specific_open_reading_frames_in_staphylococci_species_/24588306).
+### Annotation 
+
+The functional annotation of ORFs followed two approaches: 
+
+1. **Direct approach:**
+   * Utilize annotated protein files from [GenBank and RefSeq databases](https://ftp.ncbi.nlm.nih.gov) 
+   * Initiate annotation for all ORFs in each category using the direct approach.
+   * The sequence and coordinate of each ORF matched with its resembled annotated protein of  the tested genomes.
+
+2. **Indirect approach:**
+   * For ORFs that failed in the direct annotation tested for the indirect annotation that utilized the BLAST tool. 
+   * Rely on the traditional [BLASTp tool](https://blast.ncbi.nlm.nih.gov/Blast.cgi?CLIENT=web&DATABASE=nr&NCBI_GI=on&PAGE=Proteins&PROGRAM=blastp&QUERY=IDQILETNRIACRFNHSNQKYAFSITFQEECAHVTLVVYGRNLHKHFFYWKLHKQLIDLIANPNDMFFF&END_OF_HTTPGET=Y). 
+   * The BLAST tool parameters were adjusted to search in the non-redundant protein sequence database for homologous sequences to ORFs only in the Staphylococcus organism (taxid 1279), targeting a maximum of 100 species. Both identity level and query coverage should be higher than 85%.
+
+Following the annotation, perform gene enrichment analysis for ORFs in each category using the [Blast2GO tool](https://www.blast2go.com/). To identify significantly enriched biological processes in pathogenic tested genomes, we performed a two-tailed Fisher exact test provided by Blast2Go.
+
+The ORFs whose functions were unknown and were not annotated through either approach will serve as the foundation for subsequent analysis. We have designated these as unknown ORFs (unORFs).
+
+---
+
+### Conservation test
+
+The assessment of the conservation level of unknown ORFs (unORFs) unfolded in three sequential stages:
+
+1. **Assessment within the Staphylococcus Genus:**
+   - Evaluate the conservation of unORFs within the Staphylococcus genus.
+
+2. **Specific Assessment within Pathogenic Staphylococci Species:**
+   - Examine the conservation of unORFs specifically within pathogenic staphylococci species.
+
+3. **Assessment Outside the Staphylococcus Genus:**
+   - Investigate the conservation of unORFs beyond the Staphylococcus genus.
+
+To execute these conservation tests, we employed the [tblastn tool](https://blast.ncbi.nlm.nih.gov/Blast.cgi?PROGRAM=tblastn&PAGE_TYPE=BlastSearch&LINK_LOC=blasthome), extracting data based on identity level and query coverage (set at >= 85).
+
+For the determination of the pathogenicity score of each unORF, we utilized PathogenFinder 1.1 and NCBI Pathogen detection datasets (Cosentino et al., 2013; NCBI, 1988), classifying unORFs as either known to be pathogenic (1) or of unknown pathogenicity (0). The pathogenicity of an ORF is defined by the number of pathogenic genomes possessing a homologous sequence. The pathogen frequency of an ORF is specified by dividing the pathogenicity of an ORF by the total number of genomes, as illustrated in the following figure.
+
+![figure_2.jpg](https://github.com/Fatomk11295/ORFs_comparative_analysis/blob/main/images/figure_2.jpg) 
+
+The subsequent analysis will be grounded in the 23 unknown ORFs (unORFs) that exhibited remarkably high conservation within pathogenic staphylococci genomes, featuring a pathogen frequency of >= 0.98. This subset of 23 unORFs will be denoted as selected ORFs (selORFs).
+
+---
+
+### Function prediction
+
+We predicted the function of the 23 selORFs through 3 stages:
+
+   1. **Function Prediction Using DeepGoPlus Algorithm:**
+      * Employed the [DeepGoPlus algorithm](https://deepgo.cbrc.kaust.edu.sa/deepgo/) for predicting the functions of the 23 selected ORFs (selORFs). This algorithm utilizes deep learning to extract features from query protein sequences and incorporates cross-species protein-protein interaction networks.
+
+   2. **Ribosomal Binding Site (RBS) Motif Verification with Prodigal Algorithm:**
+      * Utilized the [Prodigal (Prokaryotic gene recognition and translation initiation site identification) algorithm](http://compbio.ornl.gov/prodigal/) to identify ribosomal binding site (RBS) motifs in the S. aureus Mu3 genome. This step aimed to verify whether the RBS motif preceded the ORF or not.
+
+   3. **Exploration of Neighboring Genes for Regulatory Functions:**
+      * Explored the surrounding genes to test the hypothesis that the selected ORFs (selORFs) might be non-coding RNA, potentially translated on different frames, and possibly involved in regulatory functions. To explore the neighboring genes for each ORF and outline its precise locus, the interval between all selected ORFs (selORFs) and genes of the S. aureus Mu3 genome was measured per their coordinates. We downloaded the annotated protein file for S. aureus Mu3 from the [Genbank FTP website](https://ftp.ncbi.nlm.nih.gov/genbank/).
+      * The full code for this assay can be found in this shared [python notebook](https://colab.research.google.com/drive/1CZ5nzGchY-NNEcuHAzCtOIcnrPiPS62f?usp=sharing).
+
+---
+### Explore a candidate ORF
+
+We explored the candidate selORF with ID: AP009324.1_34709, which exhibited remarkable conservation in 102 of 200 pathogenic species and conservatively embedded within the 50S ribosomal L1 protein of several species. We employed [Clustal Omega- Multiple sequence alignment (MSA)](https://www.ebi.ac.uk/Tools/msa/clustalo/)  to assess the locus conservation assay within genomes closely related to the Staphylococcus genus. 
+
+The genomes that were selected for this assay:
+   1. Salinicoccus alkaliphilus DSM 16010 (NZ_FRCF01000009.1)
+   2. Salinicoccus albus DSM 19776 strain YIM-Y21 (NZ_ARQJ01000028.1)
+   3. Salinicoccus carnicancri Crm 50.SCCRM.1_10 (NZ_ANAM01000010.1)
+   4. Nosocomiicoccus ampullae strain DSM 19163 (NZ_JACHHF010000004.1)
+   5. Nosocomiicoccus massiliensis isolate MGYG-HGUT-01449 (NZ_CABKSY010000018.1)
+
+Similarly, their genome and protein sequences were downloaded from [Genbank FTP website](https://ftp.ncbi.nlm.nih.gov/genbank/).
+
+---
+
+### Underlying data available at figshare open repository
 
 **Citation:** Farhan, Fatima; Karlowski, Wojciech M.; Zielezinski, Andrzej (2023). Underlying data for ‘Identification of pathogenic-specific open reading frames in staphylococci species’. figshare. Dataset. https://doi.org/10.6084/m9.figshare.24588306.v1
