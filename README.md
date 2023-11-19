@@ -158,3 +158,8 @@ Similarly, their genome and protein sequences were downloaded from [Genbank FTP 
 ### Underlying data available at figshare open repository
 
 **Citation:** Farhan, Fatima; Karlowski, Wojciech M.; Zielezinski, Andrzej (2023). Underlying data for ‘Identification of pathogenic-specific open reading frames in staphylococci species’. figshare. Dataset. https://doi.org/10.6084/m9.figshare.24588306.v1
+
+---
+### License
+
+[CC BY 4.0](https://doi.org/10.6084/m9.figshare.24588696.v1)
