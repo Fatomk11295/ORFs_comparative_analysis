@@ -3,6 +3,7 @@
 # Introduction
 
 This repository guides analyses in the publication "Identification of pathogenic-specific open reading frames in staphylococci species".
+**Publication citation:** Farhan FN, Zielezinski A and Karłowski WM. Identification of pathogenic-specific open reading frames in staphylococci species. F1000Research 2024, 13:27 [https://doi.org/10.12688/f1000research.142429.1](https://doi.org/10.12688/f1000research.142429.1)
 
 ## Methodology :
 
